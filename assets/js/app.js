@@ -1,16 +1,16 @@
 // @TODO: YOUR CODE HERE!
 
-// Define SVG area dimensions
+// Set SVG area dimensions
 var svgWidth = 900;
 var svgHeight = 600;
-// Define the chart's margins as an object
+// Set the chart's margins as an object
 var chartMargin = {
     top: 60,
     right: 60,
     bottom: 60,
     left: 60
 };
-// Define dimensions of the chart area
+//  Set dimensions of the chart area
 var chartWidth = svgWidth - chartMargin.left - chartMargin.right;
 var chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
 // Select body, append SVG area to it, and set the dimensions
@@ -18,7 +18,7 @@ var svg = d3.select("#scatter")
     .append("svg")
     .attr("height", svgHeight)
     .attr("width", svgWidth);
-// Append a group to the SVG area and shift ('translate') it to the right and to the bottom
+// Append to the SVG area and translate it to right and bottom
 var chartGroup = svg.append("g")
     .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
 
@@ -32,7 +32,7 @@ d3.csv("./assets/data/data.csv").then(function(censusData) {
     // Display all states in console
     console.log("States: ", states)
 
-    // Create a linear scale for the horizontal and vertical axis.
+    // Create a linear scale 
     var xLinearScale = d3.scaleLinear()
         .domain([d3.min(incomes) - 5000, d3.max(incomes) + 5000])
         .range([0, chartWidth])
@@ -59,7 +59,7 @@ d3.csv("./assets/data/data.csv").then(function(censusData) {
         .style("fill", "aqua")
         .attr("stroke", "#00e6e6");
 
-    // add state abbreviation
+    // add abreviations for states
     chartGroup.append("g")
         .selectAll("text")
         .data(censusData)
